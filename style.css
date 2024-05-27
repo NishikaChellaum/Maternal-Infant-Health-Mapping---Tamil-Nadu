@@ -1,0 +1,75 @@
+/* Additional CSS styles for decoration */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Select styles */
+select {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Left-side container styles */
+#left-side {
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Right-side container styles */
+#right-side {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Map container styles */
+.map {
+    display: none;
+}
+
+/* Iframe styles */
+iframe {
+    width: 100%;
+    height: calc(100vh - 100px); /* Adjust iframe height */
+    border: none;
+    border-radius: 10px;
+}
+
+/* Hover effect for select options */
+select option:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+/* Hover effect for map containers */
+.map:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for iframes */
+iframe:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Map and File Viewer</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+        }
+        #left-side {
+            width: 20%;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        #right-side {
+            width: 80%;
+            padding: 20px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .map {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        .map.active {
+            display: block;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="left-side">
+        <h2>Select a Category</h2>
+        <select id="category-selector">
+            <option value="">--Select a Category--</option>
+            <option value="prenatal">Prenatal Care</option>
+            <option value="postnatal">Postnatal Care</option>
+            <option value="infrastructure">Infrastructure</option>
+        </select>
+
+        <h2>Select a Map</h2>
+        <select id="map-selector">
+            <option value="">--Select a Map--</option>
+        </select>
+    </div>
+    <div id="right-side">
+        <!-- Iframes for all options -->
+        <div id="Infant_Deaths" class="map">
+            <iframe src="./infant_deaths/index.html"></iframe>
+        </div>
+        <div id="maternal_deaths" class="map">
+            <iframe src="./Maternal_death/index.html"></iframe>
+        </div>
+        <div id="No_Of_PrimaryHealthCenters" class="map">
+            <iframe src="./No_of_PHC/index.html"></iframe>
+        </div>
+        <div id="Percentage_who_had_four_or_more_ANC_District_visits" class="map">
+            <iframe src="./ANC_visit/index.html"></iframe>
+        </div>
+        <div id="Percentage_of_births_delivered_in_a_public_health_facility" class="map">
+            <iframe src="./birth_public_health_facility/index.html"></iframe>
+        </div>
+        <div id="Percentage_of_births_delivered_in_a_private_health_facility" class="map">
+            <iframe src="./birth_private_health_facility/index.html"></iframe>
+        </div>
+        <div id="MCV_Measles_MMR_MR" class="map">
+            <iframe src="./Measles_MMR/index.html"></iframe>
+        </div>
+        <div id="All_Basic_Vaccinations" class="map">
+            <iframe src="./All_basic_vacc/index.html"></iframe>
+        </div>
+        <div id="All_age_appropriate_vaccinations" class="map">
+            <iframe src="./ageapp_vaccinations/index.html"></iframe>
+        </div>
+        <div id="No_vaccinations" class="map">
+            <iframe src="./no_vaccination/index.html"></iframe>
+        </div>
+        <div id="Percentage_of_children_having_any_anaemia" class="map">
+            <iframe src="./children_anaemia/index.html"></iframe>
+        </div>
+        <div id="Percentage_of_women_with_BMI_less_than_18_5" class="map">
+            <iframe src="./bmi18/index.html"></iframe>
+        </div>
+        <div id="Percentage_of_women_with_BMI_greater_than_or_equal_to_25" class="map">
+            <iframe src="./bmi25/index.html"></iframe>
+        </div>
+        <div id="districts" class="map active"> <!-- Set 'active' class to show it by default -->
+            <iframe src="./Districts/index.html"></iframe>
+        </div>
+    </div>
+
+    <script>
+        var categories = {
+            prenatal: ["Infant_Deaths", "maternal_deaths"],
+            postnatal: ["Percentage_who_had_four_or_more_ANC_District_visits", "Percentage_of_births_delivered_in_a_public_health_facility", "Percentage_of_births_delivered_in_a_private_health_facility", "MCV_Measles_MMR_MR", "All_Basic_Vaccinations", "All_age_appropriate_vaccinations", "No_vaccinations", "Percentage_of_children_having_any_anaemia", "Percentage_of_women_with_BMI_less_than_18_5", "Percentage_of_women_with_BMI_greater_than_or_equal_to_25"],
+            infrastructure: ["No_Of_PrimaryHealthCenters"]
+        };
+
+        var categorySelector = document.getElementById('category-selector');
+        var mapSelector = document.getElementById('map-selector');
+
+        categorySelector.addEventListener('change', function() {
+            var selectedCategory = this.value;
+            var maps = categories[selectedCategory];
+            mapSelector.innerHTML = '<option value="">--Select a Map--</option>';
+            maps.forEach(function(map) {
+                var option = document.createElement('option');
+                option.value = map;
+                option.textContent = map.replace(/_/g, ' ');
+                mapSelector.appendChild(option);
+            });
+        });
+
+        mapSelector.addEventListener('change', function() {
+            var selectedMap = this.value;
+            var maps = document.querySelectorAll('.map');
+            maps.forEach(function(map) {
+                map.classList.remove('active');
+            });
+            document.getElementById(selectedMap).classList.add('active');
+        });
+    </script>
+</body>
+</html>
