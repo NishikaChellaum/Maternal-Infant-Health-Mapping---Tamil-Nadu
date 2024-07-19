@@ -103,13 +103,16 @@
         <div id="districts" class="map active"> <!-- Set 'active' class to show it by default -->
             <iframe src="./Districts/index.html"></iframe>
         </div>
+        div id="Percentage_of_births_in_a_health_facility_receiving_financial_assistance_under_JSY" class="map active"> <!-- Set 'active' class to show it by default -->
+            <iframe src="./jsy/index.html"></iframe>
+        </div>
     </div>
 
     <script>
         var categories = {
             prenatal: ["Percentage_who_had_four_or_more_ANC_District_visits","Infant_Deaths", "maternal_deaths"],
             postnatal: [ "Percentage_of_births_delivered_in_a_public_health_facility", "Percentage_of_births_delivered_in_a_private_health_facility", "MCV_Measles_MMR_MR", "All_Basic_Vaccinations", "All_age_appropriate_vaccinations", "No_vaccinations", "Percentage_of_children_having_any_anaemia", "Percentage_of_women_with_BMI_less_than_18_5", "Percentage_of_women_with_BMI_greater_than_or_equal_to_25"],
-            infrastructure: ["No_Of_PrimaryHealthCenters"]
+            infrastructure: ["No_Of_PrimaryHealthCenters","Percentage_of_births_in_a_health_facility_receiving_financial_assistance_under_JSY"]
         };
 
         var categorySelector = document.getElementById('category-selector');
